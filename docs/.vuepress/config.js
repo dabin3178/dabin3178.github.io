@@ -17,8 +17,21 @@ module.exports = {
    */
   head: [
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
-    ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
-    ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
+    ["link", { rel: "shortcut icon", href: "/favicon.ico" }],
+    ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
+    ["link", { rel: "manifest", href: "/manifest.json" }],
+    [
+      "link",
+      {
+        rel: "apple-touch-icon",
+        sizes: "192x192",
+        href: "images/maskable_icon_x192.png",
+      },
+    ],
+    [
+      "meta",
+      { name: "apple-mobile-web-app-status-bar-style", content: "black" },
+    ],
   ],
 
   /**
@@ -67,5 +80,16 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
-  ]
+    [
+      "@vuepress/pwa",
+      {
+        serviceWorker: true,
+        updatePopup: {
+          message: "새 컨텐츠가 등록되었습니다. 새로고침 버튼을 눌러주세요😀",
+          buttonText: "새로고침",
+        },
+      },
+    ],
+  ],
+  
 }
